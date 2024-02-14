@@ -5,8 +5,9 @@ language preference ,javascript and python and C++
 
 i will celebrate my achivement each 10 days 
 so by here is the plan by the end of first 10 day -i should have done 10*4 or greater problems.
-10 days=40<= leetcode questions
-20 days =80<= leetcode questions
+
+10 days-40+ Q
+20 days -80+ Q
 ....
 
 
