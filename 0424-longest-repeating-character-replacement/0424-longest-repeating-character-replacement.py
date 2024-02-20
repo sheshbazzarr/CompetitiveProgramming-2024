@@ -6,7 +6,6 @@ class Solution:
         max_len = 0
 
         for end, char in enumerate(s):
-
             hasho[char] = hasho.get(char, 0) + 1
 
             most_frequent = max(most_frequent, hasho[char])
