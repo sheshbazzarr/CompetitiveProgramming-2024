@@ -3,3 +3,4 @@ class Solution:
         for num in range(len(nums)):
             nums.append(nums[num])
         return nums
+        
