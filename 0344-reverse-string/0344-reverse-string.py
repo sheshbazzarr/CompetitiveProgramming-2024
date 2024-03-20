@@ -1,14 +1,9 @@
 class Solution:
     def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        
-        """
-        left=0
-        right=len(s)-1
-        while left<right:
-            s[left],s[right]=s[right],s[left]
-            left+=1
-            right-=1
-        return s
-        
+        right = len(s) - 1
+        left = 0
+        while right > left:
+            # Swap characters at indices left and right
+            s[left], s[right] = s[right], s[left]
+            right -= 1 
+            left += 1
