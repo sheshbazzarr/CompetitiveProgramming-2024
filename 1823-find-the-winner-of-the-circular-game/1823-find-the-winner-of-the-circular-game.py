@@ -1,12 +1,11 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
-        l=[]
+        newarray=[]
         for i in range(1,n+1,1):
-            l.append(i)
-        
-        ind=0
-        while len(l)>1:
-            ind=(ind+k-1)%n
-            l.pop(ind)
+            newarray.append(i)
+        countstartindex=0
+        while len(newarray)>1:
+            countstartindex=(countstartindex+k-1)%n
+            newarray.pop(countstartindex)
             n=n-1
-        return l[0]
+        return newarray[0]
