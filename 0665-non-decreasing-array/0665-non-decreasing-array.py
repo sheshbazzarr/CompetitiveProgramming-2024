@@ -5,7 +5,12 @@ class Solution:
             if nums[num] < nums[num-1]:
                 if num > 1 and nums[num-2] > nums[num]:
                     nums[num] = nums[num-1]
-                count += 1
+                    count += 1
+                else:
+                    nums[num-1]=nums[num]
+                    count+=1
+                    
+                
         return count <= 1
                     
                 
