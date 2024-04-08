@@ -1,6 +1,6 @@
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
-        random_count=[1000000]*26
+        random_count=[100]*26
         for s in words:
             current_count=[0]*26
             for c in s:
