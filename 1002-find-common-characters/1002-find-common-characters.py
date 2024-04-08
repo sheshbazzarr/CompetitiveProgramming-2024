@@ -1,19 +1,22 @@
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
-        random_count=[100]*26
-        for s in words:
-            current_count=[0]*26
-            for c in s:
-                c=ord(c)
-                a=ord('a')
-                current_count[c-a]+=1
-            for c in range(26):
-                total_count_bit=random_count[c]
-                current_count_bit=current_count[c]
-                random_count[c]=min(total_count_bit,current_count_bit)
-                
-        result=[]
-        for c in range(26):
-            for x in range(random_count[c]):
-                result.append(chr(c+ord("a")))
-        return result
+        d=dict()
+        res=[]
+        for ele in words[0]:
+            if ele not in d:
+                d[ele]=[1]
+            else:
+                d[ele][0]+=1
+        for i in range(1,len(words)):
+            for ele in words[i]:
+                if ele in d.keys():
+                    if len(d[ele])==i:
+                        d[ele].append(1)
+                    else:
+                        d[ele][-1]+=1
+        for key in d.keys():
+            if len(d[key])==len(words):
+                temp=key*min(d[key])
+                temp.split()
+                res+=temp
+        return res
