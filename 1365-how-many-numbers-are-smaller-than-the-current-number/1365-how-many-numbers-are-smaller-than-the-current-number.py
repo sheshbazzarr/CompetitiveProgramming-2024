@@ -5,8 +5,8 @@ class Solution:
             count[num+1] += 1
         for i in range(1, 101):
             count[i] += count[i-1]
-        new_list = []  
+        count_list = []  
         for num in nums:  
             result = count[num]  
-            new_list.append(result)  
-        return new_list
+            count_list.append(result)  
+        return count_list
