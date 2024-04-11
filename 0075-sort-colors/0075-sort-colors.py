@@ -8,7 +8,6 @@ class Solution:
             for x in range(freq):
                 nums[index]=color
                 index+=1
-    
                 
         
         
