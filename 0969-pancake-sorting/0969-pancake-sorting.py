@@ -4,9 +4,9 @@ class Solution:
         s = sorted(arr)
         if arr == s:
             return []
-
         flips = []
         for pancake in range(n):
+           
             m = arr.index(max(arr[:n-pancake]))
             if m != n-pancake-1:
                 arr[:m+1] = arr[:m+1][::-1]
