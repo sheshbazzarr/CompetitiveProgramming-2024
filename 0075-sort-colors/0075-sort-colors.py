@@ -5,9 +5,8 @@ class Solution:
             count[num]+=1
         index=0
         for color,freq in enumerate(count):
-            for z in range(freq):
+            for x in range(freq):
                 nums[index]=color
                 index+=1
-                
         
         
