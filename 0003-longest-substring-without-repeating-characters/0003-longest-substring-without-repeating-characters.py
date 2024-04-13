@@ -1,19 +1,17 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        longest = []
-        substring = []
-
+        longest=[]
+        substring=[]
+        
         for i in range(len(s)):
-            cur_char = s[i]
-
-            if cur_char not in substring:
-                substring.append(cur_char)
-                if len(substring) > len(longest):
-                    longest = substring
-
+            chr_at_hand=s[i]
+            
+            if chr_at_hand not in substring:
+                substring.append(chr_at_hand)
+                if len(longest)<len(substring):
+                    longest=substring
             else:
-                cut_idx = substring.index(cur_char)
-                substring = substring[cut_idx+1:]
-                substring.append(cur_char)
-
+                find_dam_index=substring.index(chr_at_hand)
+                substring=substring[find_dam_index+1:]
+                substring.append(chr_at_hand)
         return len(longest)
