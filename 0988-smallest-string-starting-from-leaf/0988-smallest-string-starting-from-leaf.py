@@ -8,8 +8,9 @@ class Solution:
     def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
         
         def dfs(root,cur_s):
+            
             if not root:
-                return 
+                return cur_s
 #             this is botom up when it find the sibliggs it will add them to the current string
             cur_s=chr(ord('a')+root.val)+cur_s
             if root.left and root.right:
