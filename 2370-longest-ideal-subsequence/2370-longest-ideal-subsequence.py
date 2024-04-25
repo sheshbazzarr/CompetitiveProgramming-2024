@@ -1,12 +1,11 @@
 class Solution:
     def longestIdealString(self, s: str, k: int) -> int:
-        
-      
-        ideal_len=[0]*128
+        idel_leng=[0]*128
         for chr in s:
-            asic_va=ord(chr)
-            min_ed=asic_va-k
-            max_ed=asic_va+k
-            curr_len=max(ideal_len[min_ed:max_ed+1])+1
-            ideal_len[asic_va]=curr_len
-        return max(ideal_len)
+            order_chr=ord(chr)
+            adje_max=order_chr+k
+            adje_min=order_chr-k
+            test_adj=max(idel_leng[adje_min:adje_max+1])+1
+            idel_leng[order_chr]=test_adj
+        return max(idel_leng)
+        
