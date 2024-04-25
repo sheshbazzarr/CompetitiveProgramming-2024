@@ -1,9 +1,12 @@
 class Solution:
     def longestIdealString(self, s: str, k: int) -> int:
-        ideal_lengths = [0] * 128
-        for char in s:
-            ascii_value = ord(char)
-            current_ideal_length = max(ideal_lengths[ascii_value - k : ascii_value + k + 1]) + 1
-            ideal_lengths[ascii_value] = current_ideal_length
-        max_ideal_length = max(ideal_lengths)
-        return max_ideal_length
+        
+      
+        ideal_len=[0]*128
+        for chr in s:
+            asic_va=ord(chr)
+            min_ed=asic_va-k
+            max_ed=asic_va+k
+            curr_len=max(ideal_len[min_ed:max_ed+1])+1
+            ideal_len[asic_va]=curr_len
+        return max(ideal_len)
