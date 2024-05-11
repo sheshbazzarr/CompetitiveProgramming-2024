@@ -1,20 +1,25 @@
 class Solution:
     def pancakeSort(self, arr: List[int]) -> List[int]:
-        n = len(arr)
-        res = []
-        for i in range(n):
-            cur_max = max(arr[0:n-i])
-            j = 0
-            while arr[j] != cur_max:
-                j += 1
-            # should reverse j+1 elements
-            arr[:j+1] = reversed(arr[:j+1])
-            res.append(j+1)
-            # reverse all
-            arr[:n-i] = reversed(arr[:n-i])
-            res.append(n-i)
-        return res
-    
-    
-    
-    
+        def index_of_max(end):
+            max_ = 0
+            for i in range(end):
+                if arr[max_] < arr[i]:
+                    max_ = i
+            return max_
+
+        def reverse(end):
+            start = 0
+            while start < end:
+                arr[start], arr[end] = arr[end], arr[start]
+                start += 1
+                end -= 1
+
+        ans = []
+        for i in range(len(arr)-1,0,-1):
+            sub_arr_maxIndex = index_of_max(i)
+            if arr[i] < arr[sub_arr_maxIndex]:
+                reverse(sub_arr_maxIndex)
+                reverse(i)
+                ans.append(sub_arr_maxIndex+1)
+                ans.append(i+1)
+        return ans
