@@ -1,28 +1,45 @@
-from typing import List
-
 class Robot:
-
     def __init__(self, width: int, height: int):
-        self.width = width
-        self.height = height
-        self.index = 0
-        self.positions = [[0, 0, 'South']] + \
-                        [[i, 0, 'East'] for i in range(1, width)] + \
-                        [[width - 1, i, 'North'] for i in range(1, height)] + \
-                        [[i, height - 1, 'West'] for i in range(width - 2, -1, -1)] + \
-                        [[0, i, 'South'] for i in range(height - 2, 0, -1)]
+        self.w = width
+        self.h = height
+        self.x = 0
+        self.y = 0
+        self.dir = "East"
 
-    def step(self, num: int) -> None:
-        self.index += num
+    def step (self, num: int) -> None:
+        num %= self.w * 2 + self.h * 2 - 4
+        if num == 0:
+            num = self.w * 2 + self.h * 2 - 4
+        
+        for _ in range(num):
+            if self.dir == "East":
+                if self.x == self.w - 1:
+                    self.dir = "North"
+                    self.y += 1
+                else:
+                    self.x += 1
+            elif self.dir == "North":
+                if self.y == self.h - 1:
+                    self.dir = "West"
+                    self.x -= 1
+                else:
+                    self.y += 1
+            elif self.dir == "West":
+                if self.x == 0:
+                    self.dir = "South"
+                    self.y -= 1
+                else:
+                    self.x -= 1
+            elif self.dir == "South":
+                if self.y == 0:
+                    self.dir = "East"
+                    self.x += 1
+                else:
+                    self.y -= 1
 
-    def getPos(self) -> List[int]:
-        return self.positions[self.index % len(self.positions)][:2]
+    def getPos(self) -> list:
+        return [self.x, self.y]
 
     def getDir(self) -> str:
-        return self.positions[self.index % len(self.positions)][2] if self.index else 'East'
+        return self.dir
 
-# Your Robot object will be instantiated and called as such:
-# obj = Robot(width, height)
-# obj.step(num)
-# param_2 = obj.getPos()
-# param_3 = obj.getDir()
